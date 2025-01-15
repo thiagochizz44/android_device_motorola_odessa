@@ -24,6 +24,9 @@ $(call inherit-product, device/motorola/odessa/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# OMX
+TARGET_SUPPORTS_OMX_SERVICE := false
+
 # Flags
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_DISABLE_EPPE := true
