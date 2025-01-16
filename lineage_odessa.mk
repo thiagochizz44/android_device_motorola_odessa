@@ -30,7 +30,10 @@ TARGET_SUPPORTS_OMX_SERVICE := false
 # Flags
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_DISABLE_EPPE := true
-TARGET_BOOT_ANIMATION_RES := 1080
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
 
 # Signing Build
 -include vendor/lineage-priv/keys/keys.mk
@@ -42,8 +45,8 @@ PRODUCT_BRAND := motorola
 PRODUCT_MODEL := moto g(9) plus
 PRODUCT_MANUFACTURER := motorola
 
-PRODUCT_AAPT_CONFIG := xxxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Build info
 BUILD_FINGERPRINT := "motorola/odessa_retail/odessa:11/RPAS31.Q2-59-17-4-5-5/af8e3:user/release-keys"
