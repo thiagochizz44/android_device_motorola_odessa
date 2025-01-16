@@ -29,6 +29,10 @@ $(call inherit-product, vendor/motorola/odessa/odessa-vendor.mk)
 # Board
 TARGET_BOARD_PLATFORM := sm6150
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    remove_packages
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage \
