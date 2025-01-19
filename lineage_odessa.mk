@@ -34,7 +34,7 @@ TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
 # Signing Build
-#-include vendor/lineage-priv/keys/keys.mk
+-include vendor/lineage-priv/keys/keys.mk
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_odessa
