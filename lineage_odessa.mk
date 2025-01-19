@@ -27,6 +27,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Flags
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_DISABLE_EPPE := true
+TARGET_SUPPORTS_OMX_SERVICE := false
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
