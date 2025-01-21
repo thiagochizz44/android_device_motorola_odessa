@@ -52,6 +52,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=motorola/odessa_retail/odessa:11/RPAS31.Q2-59-17-4-5-5/af8e3:user/release-keys
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
-
-export KBUILD_BUILD_USER="diasthiago"
-export KBUILD_BUILD_HOST="arch"
