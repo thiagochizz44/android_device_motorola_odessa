@@ -33,6 +33,9 @@ TARGET_BOARD_PLATFORM := sm6150
 PRODUCT_PACKAGES += \
     remove_packages
 
+# Inhreit BCR
+$(call inherit-product, vendor/bcr/bcr.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage \
