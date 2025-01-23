@@ -26,6 +26,7 @@
       "Path": "/sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq",
       "Values": [
         "9999999",
+        "1939200",
         "1555200"
       ],
       "DefaultIndex": 0,
@@ -36,7 +37,8 @@
       "Path": "/sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq",
       "Values": [
         "9999999",
-        "806400",
+        "1555200",
+        "1248000",
         "652800",
         "0"
       ],
@@ -47,7 +49,7 @@
       "Path": "/sys/class/kgsl/kgsl-3d0/max_pwrlevel",
       "Values": [
         "0",
-        "2"
+        "3"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -57,7 +59,19 @@
       "Path": "/sys/class/kgsl/kgsl-3d0/min_pwrlevel",
       "Values": [
         "0",
-        "6"
+        "3",
+        "7"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUBusMinFreq",
+      "Path": "/sys/class/devfreq/soc:qcom,gpubw/min_freq",
+      "Values": [
+        "6881",
+        "5931",
+        "3879",
+        "0"
       ],
       "ResetOnInit": true
     },
@@ -84,7 +98,16 @@
       "Path": "/sys/class/kgsl/kgsl-3d0/idle_timer",
       "Values": [
         "10000",
-        "80"
+        "60"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "TASchedtuneBoost",
+      "Path": "/dev/stune/top-app/schedtune.boost",
+      "Values": [
+        "40",
+        "10"
       ],
       "ResetOnInit": true
     },
@@ -116,12 +139,31 @@
       "ResetOnInit": true
     },
     {
+      "Name": "CPUBWSampleMs",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/sample_ms",
+      "Values": [
+        "10",
+        "4"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBWIOPercent",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/io_percent",
+      "Values": [
+        "80",
+        "34"
+      ],
+      "ResetOnInit": true
+    },
+    {
       "Name": "CPUBWMinFreq",
       "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/min_freq",
       "Values": [
         "14236",
         "9155",
-        "2288"
+        "7110",
+        "4577"
       ],
       "ResetOnInit": true
     },
@@ -136,11 +178,47 @@
       "ResetOnInit": true
     },
     {
+      "Name": "LLCCBWSampleMs",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/sample_ms",
+      "Values": [
+        "10",
+        "4"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "LLCCBWHistMemory",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/hist_memory",
+      "Values": [
+        "0",
+        "20"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "LLCCBWHystLength",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/hyst_length",
+      "Values": [
+        "0",
+        "10"
+      ],
+      "ResetOnInit": true
+    },
+    {
       "Name": "L3LittleClusterMinFreq",
       "Path": "/sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq",
       "Values": [
         "1459200000",
         "300000000"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "LLCCBWHystTriggerCount",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/bw_hwmon/hyst_trigger_count",
+      "Values": [
+        "0",
+        "3"
       ],
       "ResetOnInit": true
     },
@@ -157,19 +235,10 @@
       "Name": "PMQoSCpuDmaLatency",
       "Path": "/dev/cpu_dma_latency",
       "Values": [
-        "43",
-        "64"
+        "44",
+        "100"
       ],
       "HoldFd": true
-    },
-    {
-      "Name": "ForegroundCpuset",
-      "Path": "/dev/cpuset/foreground/cpus",
-      "Values": [
-        "0-5",
-        "0-5,7"
-      ],
-      "ResetOnInit": true
     },
     {
       "Name": "EnergyAware",
@@ -181,10 +250,27 @@
       "ResetOnInit": true
     },
     {
+      "Name": "DoubleTapToWakeEnable",
+      "Path": "/sys/touchpanel/double_tap",
+      "Values": [
+        "1",
+        "0"
+      ]
+    },
+    {
       "Name": "PowerHALMainState",
       "Path": "vendor.powerhal.state",
       "Values": [
         "SUSTAINED_PERFORMANCE",
+        ""
+      ],
+      "Type": "Property"
+    },
+    {
+      "Name": "PowerHALAudioState",
+      "Path": "vendor.powerhal.audio",
+      "Values": [
+        "AUDIO_STREAMING_LOW_LATENCY",
         ""
       ],
       "Type": "Property"
@@ -222,19 +308,19 @@
       "PowerHint": "SUSTAINED_PERFORMANCE",
       "Node": "GPUMaxFreq",
       "Duration": 0,
-      "Value": "2"
-    },
-    {
-      "PowerHint": "INTERACTION",
-      "Node": "CPUBigClusterMinFreq",
-      "Duration": 0,
-      "Value": "806400"
+      "Value": "3"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 0,
       "Value": "1248000"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "TASchedtuneBoost",
+      "Duration": 0,
+      "Value": "40"
     },
     {
       "PowerHint": "INTERACTION",
@@ -268,12 +354,6 @@
     },
     {
       "PowerHint": "LAUNCH",
-      "Node": "ForegroundCpuset",
-      "Duration": 5000,
-      "Value": "0-5"
-    },
-    {
-      "PowerHint": "LAUNCH",
       "Node": "EnergyAware",
       "Duration": 3000,
       "Value": "0"
@@ -299,8 +379,8 @@
     {
       "PowerHint": "LAUNCH",
       "Node": "PMQoSCpuDmaLatency",
-      "Duration": 3000,
-      "Value": "43"
+      "Duration": 5000,
+      "Value": "44"
     },
     {
       "PowerHint": "LAUNCH",
@@ -363,6 +443,24 @@
       "Value": "1459200000"
     },
     {
+      "PowerHint": "AUDIO_LAUNCH",
+      "Node": "PMQoSCpuDmaLatency",
+      "Duration": 2000,
+      "Value": "44"
+    },
+    {
+      "PowerHint": "AUDIO_STREAMING_LOW_LATENCY",
+      "Node": "PowerHALAudioState",
+      "Duration": 0,
+      "Value": "AUDIO_STREAMING_LOW_LATENCY"
+    },
+    {
+      "PowerHint": "AUDIO_STREAMING_LOW_LATENCY",
+      "Node": "PMQoSCpuDmaLatency",
+      "Duration": 0,
+      "Value": "44"
+    },
+    {
       "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "PowerHALRenderingState",
       "Duration": 0,
@@ -379,6 +477,23 @@
       "Node": "GPUMaxFreq",
       "Duration": 0,
       "Value": "0"
+    },
+    {
+      "PowerHint": "ML_ACC",
+      "Node": "PMQoSCpuDmaLatency",
+      "Duration": 2000,
+      "Value": "44"
+    },
+    {
+      "PowerHint": "DOUBLE_TAP_TO_WAKE",
+      "Node": "DoubleTapToWakeEnable",
+      "Duration": 0,
+      "Value": "1"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Type": "EndHint",
+      "Value": "DISPLAY_UPDATE_IMMINENT"
     }
   ]
 }
