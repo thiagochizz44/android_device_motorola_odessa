@@ -32,6 +32,10 @@ TARGET_DISABLE_EPPE := true
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
+# EvoX Flags
+BUILD_SEEDVAULT := false
+TARGET_USES_MINI_GAPPS := true
+
 # Signing Build
 -include vendor/lineage-priv/keys/keys.mk
 
